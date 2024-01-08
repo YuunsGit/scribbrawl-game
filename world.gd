@@ -15,5 +15,5 @@ func _add_player(id = 1):
 	call_deferred("add_child", player)
 
 func _on_join_pressed():
-	peer.create_client("192.168.1.4", 135)
+	peer.create_client("176.88.90.225", 135)
 	multiplayer.multiplayer_peer = peer
