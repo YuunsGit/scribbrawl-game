@@ -1,48 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxvbsu47yob8a"]
+[gd_scene load_steps=7 format=3 uid="uid://cxvbsu47yob8a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_8nw0h"]
 [ext_resource type="Texture2D" uid="uid://d3tp30bwmcoab" path="res://PNG/Default (64px)/Characters/green_character.png" id="2_q2lms"]
 [ext_resource type="Texture2D" uid="uid://cdmilkukmxicx" path="res://PNG/Default (64px)/Characters/green_hand.png" id="3_ptxtp"]
 [ext_resource type="Texture2D" uid="uid://4tmc7w8kbmrm" path="res://PNG/Default (64px)/Items/weapon_longsword.png" id="4_fhr1s"]
+[ext_resource type="Texture2D" uid="uid://ccwbt7ynn1bya" path="res://PNG/Default (64px)/Items/shield_curved.png" id="5_1aaxm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfb85"]
 radius = 22.2036
 
-[sub_resource type="Animation" id="Animation_wv654"]
-resource_name = "walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Graphics/Right Hand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(36, 5), Vector2(39, 12), Vector2(36, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Graphics/Left Hand:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-28, -24), Vector2(-25, -27), Vector2(-28, -24)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwmbd"]
-_data = {
-"walk": SubResource("Animation_wv654")
-}
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_8nw0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -54,7 +23,8 @@ shape = SubResource("CircleShape2D_kfb85")
 texture = ExtResource("2_q2lms")
 
 [node name="Right Hand" type="Sprite2D" parent="Graphics"]
-position = Vector2(36, 5)
+position = Vector2(3, 30)
+rotation = 2.46521
 texture = ExtResource("3_ptxtp")
 
 [node name="WeaponLongsword" type="Sprite2D" parent="Graphics/Right Hand"]
@@ -63,14 +33,13 @@ rotation = -0.185459
 texture = ExtResource("4_fhr1s")
 
 [node name="Left Hand" type="Sprite2D" parent="Graphics"]
-position = Vector2(-28, -24)
+position = Vector2(6, -27)
+rotation = 1.64384
 texture = ExtResource("3_ptxtp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="ShieldCurved" type="Sprite2D" parent="Graphics/Left Hand"]
+position = Vector2(-6, -5)
+rotation = -0.747998
+texture = ExtResource("5_1aaxm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_pwmbd")
-}
-speed_scale = 1.673
+[node name="Camera2D" type="Camera2D" parent="."]
