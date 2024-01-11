@@ -8,9 +8,8 @@ func _on_host_pressed():
 func _on_join_pressed():
 	if Lobby.multiplayer.get_peers().size() < 1:
 		Lobby.join_game()
-		print(Lobby.players)
 
 
 func _on_start_game_pressed():
-	if Lobby.multiplayer.get_peers().size() > 0:
+	if Lobby.multiplayer.get_peers().size() > 0 && multiplayer.is_server():
 		Lobby.load_game.rpc("res://scenes/world.tscn")
