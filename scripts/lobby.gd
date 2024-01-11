@@ -6,7 +6,7 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT = 7000
+const PORT = 8910
 const DEFAULT_SERVER_IP = "scribbrawl.yunusemre.dev" # IPv4 localhost
 const MAX_CONNECTIONS = 20
 
