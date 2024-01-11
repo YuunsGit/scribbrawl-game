@@ -1,0 +1,180 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxvbsu47yob8a"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ht0j3"]
+[ext_resource type="Texture2D" uid="uid://d3tp30bwmcoab" path="res://PNG/Default (64px)/Characters/green_character.png" id="2_hrx6w"]
+[ext_resource type="Texture2D" uid="uid://cdmilkukmxicx" path="res://PNG/Default (64px)/Characters/green_hand.png" id="3_wu2hm"]
+[ext_resource type="Texture2D" uid="uid://4tmc7w8kbmrm" path="res://PNG/Default (64px)/Items/weapon_longsword.png" id="4_hwgsb"]
+[ext_resource type="Texture2D" uid="uid://ccwbt7ynn1bya" path="res://PNG/Default (64px)/Items/shield_curved.png" id="5_dlvws"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfb85"]
+radius = 22.2036
+
+[sub_resource type="Animation" id="Animation_dtplt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/Right Hand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.38636]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics/Right Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphics/Left Hand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.64384]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Graphics/Left Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -27)]
+}
+
+[sub_resource type="Animation" id="Animation_hxfha"]
+resource_name = "shield_raise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/Left Hand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.64384, 2.30978, 2.30978, 1.64384]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics/Left Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -27), Vector2(32, 2), Vector2(32, 2), Vector2(6, -27)]
+}
+
+[sub_resource type="Animation" id="Animation_kn3bi"]
+resource_name = "sword_slash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/Right Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 30), Vector2(27, 7), Vector2(8, 28), Vector2(3, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphics/Right Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.38636, 0.327588, 3.36529, 2.38636]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05y42"]
+_data = {
+"RESET": SubResource("Animation_dtplt"),
+"shield_raise": SubResource("Animation_hxfha"),
+"sword_slash": SubResource("Animation_kn3bi")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l2spn"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimationPlayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("AnimationPlayer:speed_scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ht0j3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kfb85")
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Green" type="Sprite2D" parent="Graphics"]
+texture = ExtResource("2_hrx6w")
+
+[node name="Right Hand" type="Sprite2D" parent="Graphics"]
+position = Vector2(3, 30)
+rotation = 2.38636
+texture = ExtResource("3_wu2hm")
+
+[node name="WeaponLongsword" type="Sprite2D" parent="Graphics/Right Hand"]
+position = Vector2(-4, -25)
+rotation = -0.185459
+texture = ExtResource("4_hwgsb")
+
+[node name="Left Hand" type="Sprite2D" parent="Graphics"]
+position = Vector2(6, -27)
+rotation = 1.64384
+texture = ExtResource("3_wu2hm")
+
+[node name="ShieldCurved" type="Sprite2D" parent="Graphics/Left Hand"]
+position = Vector2(-6, -5)
+rotation = -0.747998
+texture = ExtResource("5_dlvws")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_05y42")
+}
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_l2spn")
