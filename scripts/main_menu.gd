@@ -11,5 +11,5 @@ func _on_join_pressed():
 
 
 func _on_start_game_pressed():
-	if Lobby.multiplayer.get_peers().size() > 0 && multiplayer.is_server():
+	if Lobby.multiplayer.get_peers().size() > 0:
 		Lobby.load_game.rpc("res://scenes/world.tscn")
