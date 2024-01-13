@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b7bcsb65x2og0" path="res://PNG/Default (64px)/Characters/yellow_hand.png" id="6_a06kj"]
 [ext_resource type="Texture2D" uid="uid://cebchm6l3e0of" path="res://PNG/Default (64px)/Items/weapon_pole.png" id="7_p4gsv"]
 [ext_resource type="Texture2D" uid="uid://ccwbt7ynn1bya" path="res://PNG/Default (64px)/Items/shield_curved.png" id="8_lnwvd"]
-[ext_resource type="Texture2D" uid="uid://cqjmvjl3i7cvw" path="res://icon.svg" id="9_rwwwv"]
+[ext_resource type="Texture2D" uid="uid://bknmof2xsq8m2" path="res://icon.svg" id="9_rwwwv"]
 [ext_resource type="FontFile" uid="uid://cyqur63yurk8w" path="res://fonts/Apasih.otf" id="10_3fnln"]
 
 [sub_resource type="Theme" id="Theme_m7rif"]
@@ -94,11 +94,6 @@ texture = ExtResource("9_rwwwv")
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Host" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_m7rif")
-text = "HOST"
-
 [node name="StartGame" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_m7rif")
@@ -110,7 +105,6 @@ theme = SubResource("Theme_m7rif")
 text = "JOIN
 "
 
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/StartGame" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]

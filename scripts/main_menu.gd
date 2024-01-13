@@ -1,9 +1,5 @@
 extends Control
 
-func _on_host_pressed():
-	if Lobby.multiplayer.get_peers().size() < 1:
-		Lobby.create_game()
-
 
 func _on_join_pressed():
 	if Lobby.multiplayer.get_peers().size() < 1:
